@@ -6,9 +6,10 @@ Los usuarios pueden agregar recetas, seleccionar ingredientes, definir pasos y g
 ## 🛠️ Tecnologías Utilizadas
 
 - HTML, CSS y JavaScript
-- Framework o librerías usadas (React, Vue, etc. si aplica)
-- Backend (Node.js, Django, Flask, etc. si aplica)
-- Base de datos (si aplica)
+- Archivos utilizados:
+  - `index.html`
+  - `css/style.css`, `css/styles.css`
+  - `js/scripts.js`
 
 ## 🔧 Instalación y Uso
 
@@ -20,18 +21,7 @@ Los usuarios pueden agregar recetas, seleccionar ingredientes, definir pasos y g
    ```sh
    cd tu-repositorio
    ```
-3. Instalar dependencias (si es necesario):
-   ```sh
-   npm install  # O yarn install
-   ```
-4. Iniciar el servidor de desarrollo:
-   ```sh
-   npm start  # O yarn start
-   ```
-5. Abrir en el navegador:
-   ```
-   http://localhost:3000
-   ```
+3. Abrir `index.html` en el navegador.
 
 ## 💡 Características
 
@@ -61,7 +51,7 @@ Si deseas contribuir a este proyecto:
 
 ## 👥 Autor
 
-- **Tu Nombre** - [Tu GitHub](https://github.com/tuusuario)
+- **Tu Nombre** - (https://github.com/Gianp2)
 
 ## 📦 Licencia
 
