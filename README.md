@@ -15,11 +15,11 @@ Los usuarios pueden agregar recetas, seleccionar ingredientes, definir pasos y g
 
 1. Clonar el repositorio:
    ```sh
-   git clone https://github.com/tuusuario/tu-repositorio.git
+   git clone https://github.com/Gianp2/Recetario-de-Cocina.git
    ```
 2. Navegar al directorio del proyecto:
    ```sh
-   cd tu-repositorio
+   cd Recetario-de-Cocina
    ```
 3. Abrir `index.html` en el navegador.
 
@@ -51,7 +51,7 @@ Si deseas contribuir a este proyecto:
 
 ## 👥 Autor
 
-- **Tu Nombre** - (https://github.com/Gianp2)
+- **Gianp2** - [Mi GitHub](https://github.com/Gianp2)
 
 ## 📦 Licencia
 
