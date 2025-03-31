@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Recetas de Cocina</title> 
+</head>
+<body>
+    <main id="mainContent">
+        <h2>ARMÁ TU RECETA 📝</h2>
+        <p>Este espacio es para que vos, <span>Chef</span> 👨🏻‍🍳, puedas cargar tus recetas.</p>
+
+        <!-- Sección de Información -->
+        <section class="info-section">
+            <h2>Información de Contacto</h2>
+            <div class="info-container">
+                <div class="info-item">
+                    <i class="icon-school"></i>
+                    <p><strong>🏫 Escuela Especial 2031 - Maria Molina de Albonico</strong></p>
+                </div>
+                <div class="info-item">
+                    <i class="icon-location"></i>
+                    <p><strong>📍 Dirección:</strong> Necochea 94, 2500 Cañada de Gomez, IRIONDO</p>
+                </div>
+                <div class="info-item">
+                    <i class="icon-phone"></i>
+                    <p><strong>☎️ Teléfono:</strong> 03471 423615</p>
+                </div>
+                <div class="info-item">
+                    <i class="icon-clock"></i>
+                    <p><strong>🕒 Horario de Atención:</strong></p>
+                    <ul>
+                        <li><strong>Sábado:</strong> Cerrado</li>
+                        <li><strong>Domingo:</strong> Cerrado</li>
+                        <li><strong>Lunes a Viernes:</strong> 08:00 - 17:00</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de formulario para recetas -->
+        <section class="form-section">
+            <h2>CREAR RECETA</h2>
+            <form id="recipe-form">
+                <label for="recipe-name">NOMBRE DE LA RECETA:</label>
+                <input type="text" id="recipe-name" required>
+
+                <label for="ingredient-search">BUSCAR INGREDIENTES:</label>
+                <input type="text" id="ingredient-search" placeholder="Escribe para buscar...">
+
+                <label for="ingredient-select">SELECCIONAR INGREDIENTES:</label>
+                <select id="ingredient-select" multiple></select>
+
+                <button type="button" id="add-ingredients-btn">AÑADIR INGREDIENTES</button>
+                <div id="selected-ingredients"></div>
+
+                <label for="steps">PASOS:</label>
+                <textarea id="steps" required></textarea>
+
+                <button type="submit">GUARDAR RECETA</button>
+            </form>
+        </section>
+
+        <!-- Sección de recetas guardadas -->
+        <section id="recipes-section">
+            <h2>RECETAS GUARDADAS</h2>
+            <div id="recipes-list"></div>
+        </section>
+
+        <section class="recipes-section">
+            <div id="recipeList"></div>
+            <button id="clearRecipes">BORRAR TODAS LAS RECETAS</button>
+        </section>
+
+        <!-- Sección de comentarios -->
+        <section id="comments-section">
+            <h2>COMENTARIOS</h2>
+            <form id="comment-form">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required>
+                <label for="email">Correo:</label>
+                <input type="text" id="email" required>
+                <label for="comment">Deja tu comentario:</label>
+                <textarea id="comment" required></textarea>
+                <button type="submit">Enviar Comentario</button>
+            </form>
+            <div id="comments-list"></div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        emailjs.init("hqLFCpK3qVkTF0Fdk");
+
+        document.getElementById('recipe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('recipe-name').value;
+            const ingredients = Array.from(document.querySelectorAll('#selected-ingredients .ingredient')).map(i => i.textContent);
+            const steps = document.getElementById('steps').value;
+
+            const recipeDiv = document.createElement('div');
+            recipeDiv.classList.add('recipe');
+            recipeDiv.innerHTML = `
+                <h3>${name}</h3>
+                <p><strong>Ingredientes:</strong> ${ingredients.join(', ')}</p>
+                <p><strong>Pasos:</strong> ${steps}</p>
+                <button onclick="printRecipe('${name}', '${ingredients.join(', ')}', '${steps}')">Imprimir Receta</button>
+            `;
+            document.getElementById('recipes-list').appendChild(recipeDiv);
+
+            this.reset();
+        });
+
+        function printRecipe(name, ingredients, steps) {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head><title>${name}</title></head>
+                <body>
+                    <h1>${name}</h1>
+                    <h2>Ingredientes</h2>
+                    <p>${ingredients}</p>
+                    <h2>Pasos</h2>
+                    <p>${steps}</p>
+                    <script>window.print(); window.close();<\/script>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+    </script>
+    <script src="js/scripts.js"></script>
+
+    <footer>
+        <p>Desarrollado para Escuela Especial N° 2031</p>
+        <p>© 2025 Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
